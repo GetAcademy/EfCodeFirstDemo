@@ -14,8 +14,11 @@ namespace EfCodeFirstDemo.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(
-                    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SchoolCodeFirst;Integrated Security=True");
+                const string connStr =
+                    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SchoolCodeFirst;Integrated Security=True";
+                optionsBuilder.UseSqlServer(connStr)
+                    .EnableSensitiveDataLogging()
+                    .LogTo(Console.WriteLine);
             }
         }
     }
