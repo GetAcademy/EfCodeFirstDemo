@@ -1,2 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using EfCodeFirstDemo.Data;
+using Microsoft.EntityFrameworkCore;
+
+var context = new SchoolContext();
+context.Database.Migrate();
+DataSeeder.Seed(context);
